@@ -13,7 +13,7 @@ namespace RacerBilThread
         Random rnd = new Random(DateTime.Now.Millisecond);
         string driverName;
         string carSponsor;
-        int speed = 1000;
+        int speed = 5000;
 
 
         public RacerBil(string driverName, string carSponsor)
@@ -24,13 +24,13 @@ namespace RacerBilThread
 
         public void Drive()
         {
-            for (int runde = 0; runde < 5; runde++)
+            for (int runde = 1; runde <= 5; runde++)
             {
                 IsCarBroken();
                 BabyOnRoad();
                 OilOnRoad();
                 Thread.Sleep(speed);
-                Console.WriteLine(driverName + " finished a round");
+                Console.WriteLine(driverName + " finished round " + runde);
             }
                 Console.WriteLine(driverName + " finished race now " + DateTime.Now.TimeOfDay);
         }
@@ -48,7 +48,7 @@ namespace RacerBilThread
         {
             if(rnd.Next(1, 30) > 15)
             {
-                this.speed = 500;
+                this.speed += 500;
 
                 if(rnd.Next(1, 30) > 25)
                 {
@@ -61,7 +61,7 @@ namespace RacerBilThread
         {
             if(rnd.Next(1, 20) > 10)
             {
-                this.speed = 2000;
+                this.speed -= 500;
             }
         }
     }
